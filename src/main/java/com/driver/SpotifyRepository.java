@@ -273,6 +273,10 @@ public class SpotifyRepository {
         playlistListenerMap.put(playlist,listener);
 
         List<Playlist> playlists1 = userPlaylistMap.get(user);
+
+        if(playlists1==null)
+            playlists1=new ArrayList<>();
+
         playlists1.add(playlist);
         userPlaylistMap.put(user,playlists1);
 

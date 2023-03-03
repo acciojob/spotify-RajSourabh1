@@ -381,8 +381,10 @@ public class SpotifyRepository {
         Artist artist1=null;
 
         for(Artist artist:artists){
-            if(artist.getLikes()>=max)
+            if(artist.getLikes()>=max){
                 artist1=artist;
+                max = artist.getLikes();
+            }
         }
         if(artist1==null)
             return null;

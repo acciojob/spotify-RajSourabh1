@@ -166,9 +166,19 @@ public class SpotifyRepository {
 
             creatorPlaylistMap.put(user,playlist);
 
-            List<Playlist> userPlayList = userPlaylistMap.get(user);  //error possibility
-            userPlayList.add(playlist);
-            userPlaylistMap.put(user,userPlayList);
+//            List<Playlist> userPlayList = userPlaylistMap.get(user);  //error possibility
+//            userPlayList.add(playlist);
+//            userPlaylistMap.put(user,userPlayList);
+
+            if(userPlaylistMap.containsKey(user)){
+                List<Playlist> userPlayList = userPlaylistMap.get(user);
+                userPlayList.add(playlist);
+                userPlaylistMap.put(user,userPlayList);
+            }else{
+                List<Playlist> plays = new ArrayList<>();
+                plays.add(playlist);
+                userPlaylistMap.put(user,plays);
+            }
 
             return playlist;
         }
@@ -208,9 +218,15 @@ public class SpotifyRepository {
 
             creatorPlaylistMap.put(user,playlist);
 
-            List<Playlist> userPlayList = userPlaylistMap.get(user);
-            userPlayList.add(playlist);
-            userPlaylistMap.put(user,userPlayList);
+            if(userPlaylistMap.containsKey(user)){
+                List<Playlist> userPlayList = userPlaylistMap.get(user);
+                userPlayList.add(playlist);
+                userPlaylistMap.put(user,userPlayList);
+            }else{
+                List<Playlist> plays = new ArrayList<>();
+                plays.add(playlist);
+                userPlaylistMap.put(user,plays);
+            }
 
             return playlist;
         }

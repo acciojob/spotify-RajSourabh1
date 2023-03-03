@@ -59,7 +59,7 @@ public class SpotifyRepository {
         Artist artist1 = null;
 
         for(Artist artist:artists){
-            if(Objects.equals(artist.getName(), artistName)){
+            if(artist.getName()==artistName){
                 artist1=artist;
                 break;
             }
@@ -378,7 +378,10 @@ public class SpotifyRepository {
             if(artist.getLikes()>=max)
                 artist1=artist;
         }
-        return artist1.getName();
+        if(artist1==null)
+            return null;
+        else
+            return artist1.getName();
     }
 
     public String mostPopularSong() {
@@ -389,6 +392,9 @@ public class SpotifyRepository {
             if(song1.getLikes()>=max)
                 song=song1;
         }
-        return song.getTitle();
+        if(song==null)
+            return null;
+        else
+            return song.getTitle();
     }
 }

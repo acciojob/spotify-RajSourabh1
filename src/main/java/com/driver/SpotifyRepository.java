@@ -88,6 +88,9 @@ public class SpotifyRepository {
             albums.add(album);
 
             List<Album> l = artistAlbumMap.get(artist1);
+            if(l == null){
+                l = new ArrayList<>();
+            }
             l.add(album);
             artistAlbumMap.put(artist1,l);
 
@@ -273,10 +276,9 @@ public class SpotifyRepository {
         playlistListenerMap.put(playlist,listener);
 
         List<Playlist> playlists1 = userPlaylistMap.get(user);
-
-        if(playlists1==null)
-            playlists1=new ArrayList<>();
-
+        if(playlists1 == null){
+            playlists1 = new ArrayList<>();
+        }
         playlists1.add(playlist);
         userPlaylistMap.put(user,playlists1);
 
@@ -379,10 +381,8 @@ public class SpotifyRepository {
         Artist artist1=null;
 
         for(Artist artist:artists){
-            if(artist.getLikes()>=max){
+            if(artist.getLikes()>=max)
                 artist1=artist;
-                max = artist.getLikes();
-            }
         }
         if(artist1==null)
             return null;
